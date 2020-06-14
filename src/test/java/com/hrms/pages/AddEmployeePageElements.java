@@ -55,27 +55,25 @@ public class AddEmployeePageElements extends CommonMethods {
 	@FindBy(id="personal_txtEmployeeId")
 	public WebElement personalID;
 	
-	@FindBy (xpath="//div[@id='sidebar']/div/h1")
+	@FindBy (xpath="//div[@id='profile-pic']/h1")
 	public WebElement addedEmployee;
 
 	public AddEmployeePageElements() {
 		PageFactory.initElements(BaseClass.driver, this);
 	}
 
-    public void addEmployeeInHMR (String empFirstN, String empMiddleN, String empLastN) {
+    public void addEmployeeInHMR (String empFirstN, String empLastN) {
     	sendText (empFirstName, empFirstN);
-    	sendText (empMiddleName, empMiddleN);
     	sendText (empLastName, empLastN);
     }
 	
-    public void createLoginDetails (String empUserName, String ePassword, String rePassword) {
-    	waitAndClick (createLoginDetails);
+    public void createLoginDetails (String empUserName, String ePassword) {
+    	
     	sendText (empUsername, empUserName);
     	sendText (empPassword, ePassword);
-    	sendText (empRePassword, rePassword);
+    	sendText (empRePassword, ePassword);
     	Select select = new Select (status);
     	select.selectByVisibleText("Enabled");
-    	waitAndClick(saveEmp);
     }
 	
 	

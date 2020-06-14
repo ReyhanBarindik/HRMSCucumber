@@ -54,6 +54,33 @@ public class CommonMethods extends PageInitializer {
 		}
 	}
 
+	public static void radioClick(List<WebElement> elements, String radioText) {
+		
+		for (WebElement el:elements) {
+			if (el.getText().equals(radioText)) {
+				el.click();
+				break;
+			}
+		}
+		
+	}
+	public static void radioClickElement(WebElement element, String radioText) {
+		
+			if (element.getText().equals(radioText)) {
+				element.click();
+				
+			}
+		}
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
 	public static void selectDdValue(WebElement element, String textToSelect) {
 
 		try {
@@ -273,6 +300,43 @@ public class CommonMethods extends PageInitializer {
 		}
 		return destinationFile;
 	}
+	
+	// This method for Hooks Class  
+	public static byte[] takeScreenShot(String filename) {
+
+		TakesScreenshot ts = (TakesScreenshot) driver;
+
+		byte[] picBytes = ts.getScreenshotAs(OutputType.BYTES);
+
+
+
+		File file = ts.getScreenshotAs(OutputType.FILE);
+
+		String destinationFile = Constants.SCREENSHOT_FILEPATH + filename + getTimeStemp() + ".png";
+
+
+
+		try {
+
+			FileUtils.copyFile(file, new File(destinationFile));
+
+		} catch (Exception ex) {
+
+			System.out.println("Cannot take screenshot!");
+
+		}
+
+
+
+		return picBytes;
+
+	}
+	
+	
+	
+	
+	
+	
 
 	public static String getTimeStemp () {
 		Date date = new Date();
@@ -288,6 +352,8 @@ public class CommonMethods extends PageInitializer {
 		}
 	}
 	
+	
+		
 	
 	
 	

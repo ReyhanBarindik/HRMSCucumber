@@ -4,6 +4,8 @@ import com.hrms.utils.CommonMethods;
 import com.hrms.utils.ConfigsReader;
 import static org.junit.Assert.*;
 
+import org.junit.Assert;
+
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
@@ -41,7 +43,7 @@ public class EmployeeSearchSteps extends CommonMethods {
 	public void user_see_employee_information_is_displayed() {
         boolean expectedId=viewEmp.empID.isDisplayed();
         boolean actualId=viewEmp.afterSearchEmpId.isDisplayed();
-        assertEquals(expectedId, actualId);
+        Assert.assertEquals(expectedId, actualId);
         tearDown();
 	}
 

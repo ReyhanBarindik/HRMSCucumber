@@ -3,6 +3,10 @@ package com.hrms.utils;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.IOException;
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
 
 import org.apache.poi.ss.usermodel.Sheet;
 import org.apache.poi.ss.usermodel.Workbook;
@@ -40,18 +44,46 @@ public class ExcelUtility {
 	public static String getCellData (int rowIndex, int cellIndex) {
 		return sheet.getRow(rowIndex).getCell(cellIndex).toString();
 	}
-	public static Object[][] excelIntoArray (String filePath, String sheetName) {   // bunu call yapacagiz 
+	
+	
+	public static List<Map<String,String>> excelIntoListOfMaps (String filePath, String sheetName) {   // bunu call yapacagiz 
 		openExcel (filePath, sheetName);
 		
-		Object [][] data= new Object [rowCount()-1][colCount()]; //rowCount()-1 cunku header'i istemiyoruz username in oldugu yere username yazmiyoruz tabiki
+		List<Map<String, String>> data= new ArrayList<Map<String, String>>(); //rowCount()-1 cunku header'i istemiyoruz username in oldugu yere username yazmiyoruz tabiki
 		
-		for (int i=1; i<rowCount(); i++) {
-			for (int y=0; y<colCount(); y++) {
-				data[i-1][y]= getCellData(i,y); // data olusturuyoruz array yazarken array in satiri bos kalmamasi lazim 
+		for (int i=1; i<rowCount(); i++) {   //-->loop for data starts with 1 because every row gives a map us but first row is header
+			
+			Map<String, String>map = new HashMap <>();
+			for (int j=0; j<colCount(); j++) {
+				map.put(getCellData(0,j), getCellData(i,j));  //---> getCellData(0,j) header       getCellData(i,j) data
 			}
+			data.add(map);
 		}
 		return data;
 	}
+	
+	
+	
+	public static List<ArrayList<String>> excelIntoListOfList (String filePath, String sheetName) {
+		openExcel(filePath, sheetName);
+		List<ArrayList<String>> data = new ArrayList<ArrayList<String>>();
+		return data;
+		
+		
+		
+		
+		
+	}
+	
+
+	
+	
+	
+	
+	
+	
+	
+	
 	
 	
 	
