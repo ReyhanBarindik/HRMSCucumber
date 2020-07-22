@@ -332,11 +332,7 @@ public class CommonMethods extends PageInitializer {
 
 	}
 	
-	
-	
-	
-	
-	
+
 
 	public static String getTimeStemp () {
 		Date date = new Date();

@@ -2,7 +2,7 @@ package com.hrms.steps;
 
 import com.hrms.utils.CommonMethods;
 import com.hrms.utils.ConfigsReader;
-import static org.junit.Assert.*;
+
 
 import org.junit.Assert;
 

@@ -20,7 +20,7 @@ import io.cucumber.junit.CucumberOptions;
 								// if set to true no actual execution will happen
 			, strict = true
 			, monochrome = true
-			, tags = "@smoke"
+			, tags = "@inProgress"
 			, plugin = {
 					"pretty", // prints gherkin steps in
 																							// console
